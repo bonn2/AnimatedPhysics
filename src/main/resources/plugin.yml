@@ -1,0 +1,6 @@
+name: AnimatedPhysics
+version: '${version}'
+main: net.bonn2.animatedphysics.AnimatedPhysics
+api-version: 1.19
+authors: [bonn2]
+description: Adds physics to the blocks created by pim16aap2's AnimatedArchitecture
