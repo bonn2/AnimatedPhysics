@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:master-SNAPSHOT"
+    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:0.3"
     compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:master-SNAPSHOT"
 }
 
