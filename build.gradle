@@ -8,8 +8,8 @@ version = '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     maven {
-        name = 'papermc-repo'
-        url = 'https://repo.papermc.io/repository/maven-public/'
+        name = "spigotmc-repo"
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
     }
     maven {
         name = "sonatype"
@@ -21,10 +21,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:24.0.0'
-    compileOnly 'io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT'
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:master-SNAPSHOT"
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:master-SNAPSHOT"
+    compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
+    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:0.3"
+    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:0.3"
 }
 
 def targetJavaVersion = 17
