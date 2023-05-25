@@ -1,4 +1,4 @@
-package net.bonn2.animatedphysics;
+package net.bonn2.animatedphysics.colliders;
 
 import io.papermc.paper.entity.TeleportFlag;
 import net.kyori.adventure.text.Component;

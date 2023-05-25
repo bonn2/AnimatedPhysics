@@ -1,7 +1,7 @@
 package net.bonn2.animatedphysics.listeners;
 
 import net.bonn2.animatedphysics.AnimatedPhysics;
-import net.bonn2.animatedphysics.CollisionShulker;
+import net.bonn2.animatedphysics.colliders.CollisionShulker;
 import nl.pim16aap2.animatedarchitecture.core.animation.RotatedPosition;
 import nl.pim16aap2.animatedarchitecture.core.api.IAnimatedArchitecturePlatform;
 import nl.pim16aap2.animatedarchitecture.core.api.animatedblock.IAnimatedBlock;
