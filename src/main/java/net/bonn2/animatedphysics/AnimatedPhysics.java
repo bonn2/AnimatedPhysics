@@ -1,5 +1,6 @@
 package net.bonn2.animatedphysics;
 
+import net.bonn2.animatedphysics.bstats.Metrics;
 import net.bonn2.animatedphysics.listeners.AnimatedBlockListener;
 import net.bonn2.animatedphysics.listeners.AnimationListener;
 import net.bonn2.animatedphysics.listeners.EntityDamageListener;
@@ -37,6 +38,9 @@ public final class AnimatedPhysics extends JavaPlugin {
         AnimationListener.registerFactory(
                 getAnimatedArchitecturePlugin().getAnimatedArchitectureSpigotPlatform(this).get()
         );
+
+        // Start metrics
+        new Metrics(this, 18565);
     }
 
     @Override
