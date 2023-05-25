@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class AnimatedBlockListener implements IAnimatedBlockHook
 {
-    public static void registerMyAnimationHookFactory(IAnimatedArchitecturePlatform animatedArchitecturePlatform) {
+    public static void registerFactory(IAnimatedArchitecturePlatform animatedArchitecturePlatform) {
         animatedArchitecturePlatform.getAnimatedBlockHookManager().registerFactory(AnimatedBlockListener::new);
     }
 
