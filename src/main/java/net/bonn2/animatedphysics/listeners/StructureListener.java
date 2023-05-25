@@ -1,36 +1,49 @@
 package net.bonn2.animatedphysics.listeners;
 
-import nl.pim16aap2.animatedarchitecture.core.animation.Animation;
+import net.bonn2.animatedphysics.AnimatedPhysics;
+import net.bonn2.animatedphysics.CollisionShulker;
+import nl.pim16aap2.animatedarchitecture.core.animation.RotatedPosition;
+import nl.pim16aap2.animatedarchitecture.core.api.IAnimatedArchitecturePlatform;
 import nl.pim16aap2.animatedarchitecture.core.api.animatedblock.IAnimatedBlock;
-import nl.pim16aap2.animatedarchitecture.core.api.animatedblock.IAnimationHook;
-import nl.pim16aap2.animatedarchitecture.spigot.core.AnimatedArchitectureSpigotPlatform;
+import nl.pim16aap2.animatedarchitecture.core.api.animatedblock.IAnimatedBlockHook;
+import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 
 
-public class StructureListener implements IAnimationHook
+public class StructureListener implements IAnimatedBlockHook
 {
-    public static void registerMyAnimationHookFactory(AnimatedArchitectureSpigotPlatform animatedArchitecturePlatform) {
-        animatedArchitecturePlatform.getAnimationHookManager().registerFactory(StructureListener::new);
+    public static void registerMyAnimationHookFactory(IAnimatedArchitecturePlatform animatedArchitecturePlatform) {
+        animatedArchitecturePlatform.getAnimatedBlockHookManager().registerFactory(StructureListener::new);
     }
 
-    private final Animation<@NotNull IAnimatedBlock> animation;
+    private final IAnimatedBlock animatedBlock;
+    private CollisionShulker shulker;
+    private int count = 0;
 
-    private StructureListener(Animation<@NotNull IAnimatedBlock> animation) {
-        this.animation = animation;
+    private StructureListener(IAnimatedBlock animatedBlock)
+    {
+        this.animatedBlock = animatedBlock;
     }
 
     @Override
     public @NotNull String getName() {
-        return "AnimatedPhysicsHook";
+        return "AnimatedPhysicsBlockHook";
     }
 
     @Override
-    public void onPrepare() {
-        animation.getAnimatedBlocks().forEach(iAnimatedBlock -> System.out.println(iAnimatedBlock.getLocation()));
+    public void preDeleteOriginalBlock() {
+        // Temp: Fix preDeleteOriginalBlock being called multiple times
+        if (count++ > 0) return;
+        shulker = new CollisionShulker(animatedBlock.getStartPosition(), animatedBlock.getWorld());
     }
 
     @Override
-    public void onPostAnimationStep() {
-        // Some code that is executed after each step of the animation.
+    public void preMove(@NotNull RotatedPosition newPosition) {
+        Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> shulker.move(newPosition));
+    }
+
+    @Override
+    public void postBlockPlace() {
+        Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> shulker.remove());
     }
 }
