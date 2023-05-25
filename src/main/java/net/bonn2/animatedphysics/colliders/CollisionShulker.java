@@ -12,7 +12,7 @@ import org.bukkit.entity.Shulker;
 
 public class CollisionShulker {
 
-    public static final double SHULKER_OFFSET = 0.74063;
+    public static final double SHULKER_OFFSET = 0.74;
 
     private final ArmorStand armorStand;
     private final Shulker shulker;

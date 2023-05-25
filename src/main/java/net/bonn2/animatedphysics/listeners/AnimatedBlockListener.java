@@ -10,17 +10,17 @@ import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 
 
-public class StructureListener implements IAnimatedBlockHook
+public class AnimatedBlockListener implements IAnimatedBlockHook
 {
     public static void registerMyAnimationHookFactory(IAnimatedArchitecturePlatform animatedArchitecturePlatform) {
-        animatedArchitecturePlatform.getAnimatedBlockHookManager().registerFactory(StructureListener::new);
+        animatedArchitecturePlatform.getAnimatedBlockHookManager().registerFactory(AnimatedBlockListener::new);
     }
 
     private final IAnimatedBlock animatedBlock;
     private CollisionShulker shulker;
     private int count = 0;
 
-    private StructureListener(IAnimatedBlock animatedBlock)
+    private AnimatedBlockListener(IAnimatedBlock animatedBlock)
     {
         this.animatedBlock = animatedBlock;
     }
@@ -31,7 +31,7 @@ public class StructureListener implements IAnimatedBlockHook
     }
 
     @Override
-    public void preDeleteOriginalBlock() {
+    public void preSpawn() {
         // Temp: Fix preDeleteOriginalBlock being called multiple times
         if (count++ > 0) return;
         shulker = new CollisionShulker(animatedBlock.getStartPosition(), animatedBlock.getWorld());
@@ -43,7 +43,7 @@ public class StructureListener implements IAnimatedBlockHook
     }
 
     @Override
-    public void postBlockPlace() {
+    public void postKill() {
         Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> shulker.remove());
     }
 }

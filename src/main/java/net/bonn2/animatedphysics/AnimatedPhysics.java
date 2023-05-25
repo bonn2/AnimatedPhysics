@@ -1,6 +1,6 @@
 package net.bonn2.animatedphysics;
 
-import net.bonn2.animatedphysics.listeners.StructureListener;
+import net.bonn2.animatedphysics.listeners.AnimatedBlockListener;
 import nl.pim16aap2.animatedarchitecture.spigot.core.AnimatedArchitecturePlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,7 +25,7 @@ public final class AnimatedPhysics extends JavaPlugin {
             return;
         }
 
-        StructureListener.registerMyAnimationHookFactory(
+        AnimatedBlockListener.registerMyAnimationHookFactory(
                 getAnimatedArchitecturePlugin().getAnimatedArchitectureSpigotPlatform(this).get()
         );
     }
