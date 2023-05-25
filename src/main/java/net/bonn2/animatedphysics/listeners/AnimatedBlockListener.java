@@ -9,9 +9,14 @@ import nl.pim16aap2.animatedarchitecture.core.api.animatedblock.IAnimatedBlockHo
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AnimatedBlockListener implements IAnimatedBlockHook
 {
+    public static final List<AnimatedBlockListener> instances = new ArrayList<>();
+
     public static void registerFactory(IAnimatedArchitecturePlatform animatedArchitecturePlatform) {
         animatedArchitecturePlatform.getAnimatedBlockHookManager().registerFactory(AnimatedBlockListener::new);
     }
@@ -23,6 +28,7 @@ public class AnimatedBlockListener implements IAnimatedBlockHook
     private AnimatedBlockListener(IAnimatedBlock animatedBlock)
     {
         this.animatedBlock = animatedBlock;
+        instances.add(this);
     }
 
     @Override
@@ -44,6 +50,15 @@ public class AnimatedBlockListener implements IAnimatedBlockHook
 
     @Override
     public void postKill() {
-        Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> shulker.remove());
+        if (AnimatedPhysics.plugin.isEnabled())
+            Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> {
+                shulker.remove();
+                instances.remove(this);
+            });
+    }
+
+    public void removeNow() {
+        shulker.remove();
+        instances.remove(this);
     }
 }

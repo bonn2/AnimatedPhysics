@@ -2,6 +2,7 @@ package net.bonn2.animatedphysics;
 
 import net.bonn2.animatedphysics.listeners.AnimatedBlockListener;
 import net.bonn2.animatedphysics.listeners.AnimationListener;
+import net.bonn2.animatedphysics.listeners.EntityDamageListener;
 import nl.pim16aap2.animatedarchitecture.spigot.core.AnimatedArchitecturePlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,6 +17,9 @@ public final class AnimatedPhysics extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
+
+        // Register Bukkit events
+        getServer().getPluginManager().registerEvents(new EntityDamageListener(), this);
 
         // Get animated architecture instance
         animatedArchitecturePlugin =
@@ -38,6 +42,8 @@ public final class AnimatedPhysics extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        while (AnimatedBlockListener.instances.size() > 0)
+            AnimatedBlockListener.instances.get(0).removeNow();
     }
 
     public AnimatedArchitecturePlugin getAnimatedArchitecturePlugin() {

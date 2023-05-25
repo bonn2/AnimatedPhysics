@@ -25,6 +25,7 @@ public class CollisionShulker {
                 entity -> {
                     entity.setPersistent(true);
                     entity.customName(Component.text("AnimatedPhysicsAS"));
+                    entity.addScoreboardTag("AnimatedPhysicsAS");
                     entity.setCustomNameVisible(false);
                     entity.setGravity(false);
                     entity.setBasePlate(false);
@@ -41,6 +42,7 @@ public class CollisionShulker {
                 entity -> {
                     entity.setPersistent(true);
                     entity.customName(Component.text("AnimatedPhysicsS"));
+                    entity.addScoreboardTag("AnimatedPhysicsS");
                     entity.setPeek(0);
                     entity.setAware(false);
                     entity.setCustomNameVisible(false);
