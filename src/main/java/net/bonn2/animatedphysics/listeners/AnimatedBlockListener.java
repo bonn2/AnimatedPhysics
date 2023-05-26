@@ -45,7 +45,8 @@ public class AnimatedBlockListener implements IAnimatedBlockHook
 
     @Override
     public void preMove(@NotNull RotatedPosition newPosition) {
-        Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> shulker.move(newPosition));
+        if (AnimatedPhysics.plugin.isEnabled())
+            Bukkit.getScheduler().runTask(AnimatedPhysics.plugin, () -> shulker.move(newPosition));
     }
 
     @Override
