@@ -4,6 +4,7 @@ import net.bonn2.animatedphysics.bstats.Metrics;
 import net.bonn2.animatedphysics.listeners.AnimatedBlockListener;
 import net.bonn2.animatedphysics.listeners.AnimationListener;
 import net.bonn2.animatedphysics.listeners.EntityDamageListener;
+import net.bonn2.animatedphysics.util.ModrinthUpdateChecker;
 import nl.pim16aap2.animatedarchitecture.spigot.core.AnimatedArchitecturePlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -41,6 +42,9 @@ public final class AnimatedPhysics extends JavaPlugin {
 
         // Start metrics
         new Metrics(this, 18565);
+
+        // Check for updates
+        ModrinthUpdateChecker.check(this);
     }
 
     @Override
