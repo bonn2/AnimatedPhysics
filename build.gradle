@@ -16,18 +16,19 @@ repositories {
         url = "https://oss.sonatype.org/content/groups/public/"
     }
     maven {
-        url "https://jitpack.io"
+        name = "jitpack"
+        url = "https://jitpack.io"
     }
 }
 
 dependencies {
     implementation 'org.jetbrains:annotations:24.0.1'
-    compileOnly 'io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT'
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:0.5"
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:0.5"
+    compileOnly 'io.papermc.paper:paper-api:1.20-R0.1-SNAPSHOT'
+    implementation 'com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:0.6.1'
+    implementation 'com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:0.6.1'
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
