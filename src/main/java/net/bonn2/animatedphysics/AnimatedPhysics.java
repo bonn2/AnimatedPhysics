@@ -50,8 +50,8 @@ public final class AnimatedPhysics extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        while (AnimatedBlockListener.instances.size() > 0)
-            AnimatedBlockListener.instances.get(0).removeNow();
+        while (!AnimatedBlockListener.instances.isEmpty())
+            AnimatedBlockListener.instances.getFirst().removeNow();
     }
 
     public AnimatedArchitecturePlugin getAnimatedArchitecturePlugin() {
