@@ -1,4 +1,4 @@
-package net.bonn2.animatedphysics.listeners;
+package net.bonn2.animatedphysics.listeners.shulker;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

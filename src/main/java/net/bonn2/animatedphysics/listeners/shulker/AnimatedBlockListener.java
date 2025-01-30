@@ -1,4 +1,4 @@
-package net.bonn2.animatedphysics.listeners;
+package net.bonn2.animatedphysics.listeners.shulker;
 
 import net.bonn2.animatedphysics.AnimatedPhysics;
 import net.bonn2.animatedphysics.colliders.CollisionShulker;
