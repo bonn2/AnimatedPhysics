@@ -23,11 +23,10 @@ repositories {
 dependencies {
     implementation 'org.jetbrains:annotations:24.0.1'
     compileOnly 'io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT'
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:animatedarchitecture-core:0.5"
-    compileOnly "com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:0.5"
+    compileOnly("com.github.PimvanderLoos.AnimatedArchitecture:spigot-core:0.7.2")
 }
 
-def targetJavaVersion = 17
+def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
